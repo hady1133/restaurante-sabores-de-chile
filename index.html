@@ -2,14 +2,368 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Restaurante de gastronomía chilena en Santiago">
     <meta name="author" content="Hady Añigual Nahoe">
     <title>Restaurante Sabores de Chile</title>
+    <!-- Hoja de estilos interna (migraci&oacute;n de etiquetas font a CSS) -->
+    <style>
+        /* === RESET Y BASE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #333;
+            background-color: #faf8f5;
+            line-height: 1.7;
+        }
+
+        /* === HEADER === */
+        header {
+            background: linear-gradient(135deg, #5c1a1a, #8B0000, #a33);
+            color: #fff;
+            text-align: center;
+            padding: 50px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        header h1 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 2.6em;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+            color: #fff;
+        }
+        header p.subtitulo {
+            color: #f0d6a8;
+            font-size: 1.1em;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* === NAVEGACIÓN === */
+        nav {
+            background: #3d1010;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        nav h2 {
+            display: none;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li a {
+            display: block;
+            color: #f0d6a8;
+            text-decoration: none;
+            padding: 14px 18px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: background 0.3s, color 0.3s;
+        }
+        nav ul li a:hover {
+            background: #8B0000;
+            color: #fff;
+        }
+
+        /* === CONTENIDO PRINCIPAL === */
+        main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* === SECCIONES === */
+        section {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            border-left: 5px solid #8B0000;
+        }
+        h2.seccion {
+            color: #8B0000;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0d6a8;
+        }
+        h2.promo {
+            color: #2e7d32;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #a5d6a7;
+        }
+        h3 {
+            color: #5c1a1a;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+        section p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        /* === TABLAS === */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+        }
+        thead {
+            background: linear-gradient(135deg, #5c1a1a, #8B0000);
+            color: #fff;
+        }
+        th {
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        tbody tr:nth-child(even) {
+            background: #fdf5ee;
+        }
+        tbody tr:hover {
+            background: #f5e6d3;
+            transition: background 0.2s;
+        }
+
+        /* === LISTA DE DEFINICIÓN (Especialidades) === */
+        dl {
+            margin: 10px 0;
+        }
+        dt {
+            color: #5c1a1a;
+            font-size: 1.1em;
+            margin-top: 15px;
+        }
+        dd {
+            margin-left: 20px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        /* === PROMOCIONES === */
+        #promociones {
+            border-left-color: #2e7d32;
+            background: linear-gradient(135deg, #f9fff9, #fff);
+        }
+        #promociones ul {
+            list-style: none;
+            padding: 0;
+        }
+        #promociones ul li {
+            background: #fff;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        #promociones ul li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .precio-promo {
+            color: #c62828;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        /* === IMÁGENES === */
+        section img {
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+            max-width: 100%;
+            height: auto;
+        }
+        section img:hover {
+            transform: scale(1.02);
+        }
+
+        /* === AUDIO === */
+        audio {
+            margin: 10px 0;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* === IFRAMES (Videos) === */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            margin: 15px 0;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        /* === FORMULARIOS === */
+        fieldset {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 25px;
+            background: #fdfcfa;
+            transition: border-color 0.3s;
+        }
+        fieldset:hover {
+            border-color: #8B0000;
+        }
+        legend {
+            color: #5c1a1a;
+            font-size: 1.2em;
+            padding: 0 10px;
+        }
+        label {
+            font-weight: 500;
+            color: #444;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            max-width: 450px;
+            padding: 10px 14px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+            margin-top: 5px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background: #fff;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #8B0000;
+            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.15);
+            outline: none;
+        }
+        textarea {
+            resize: vertical;
+        }
+        input[type="submit"],
+        input[type="reset"] {
+            background: linear-gradient(135deg, #8B0000, #a33);
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            margin-right: 10px;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0 2px 6px rgba(139,0,0,0.3);
+        }
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background: linear-gradient(135deg, #a33, #c62828);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(139,0,0,0.4);
+        }
+        input[type="reset"] {
+            background: linear-gradient(135deg, #777, #999);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        input[type="reset"]:hover {
+            background: linear-gradient(135deg, #999, #bbb);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+            accent-color: #8B0000;
+        }
+
+        /* === ADDRESS === */
+        address {
+            background: #f9f3ec;
+            border-left: 4px solid #f0d6a8;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 15px;
+            font-style: normal;
+            color: #555;
+        }
+
+        /* === CONTACTO === */
+        #contacto a {
+            color: #8B0000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        #contacto a:hover {
+            color: #c62828;
+            text-decoration: underline;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: #3d1010;
+            color: #ccc;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 30px;
+        }
+        footer p.legal {
+            font-size: 0.85em;
+            color: #aaa;
+        }
+        footer a {
+            color: #f0d6a8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
     <!-- Encabezado principal del restaurante -->
     <header>
-        <h1><font color="darkred">Restaurante Sabores de Chile Ltda.</font></h1>
+        <h1>Restaurante Sabores de Chile Ltda.</h1>
+        <p class="subtitulo">Gastronom&iacute;a tradicional chilena desde 2011</p>
     </header>
 
     <!-- Menú de navegación con anclas a cada sección -->
@@ -17,15 +371,15 @@
         <h2>Men&uacute; de Navegaci&oacute;n</h2>
         <ul>
             <li><a href="#quienes-somos">Quienes Somos</a></li>
-            <li><a href="#platos">Platos Principales</a></li>
+            <li><a href="#platos">Platos</a></li>
             <li><a href="#bebidas">Bebidas</a></li>
             <li><a href="#postres">Postres</a></li>
-            <li><a href="#especialidades">Especialidades de la Casa</a></li>
-            <li><a href="#promociones">Promociones Especiales</a></li>
+            <li><a href="#especialidades">Especialidades</a></li>
+            <li><a href="#promociones">Promociones</a></li>
             <li><a href="#plato-semana">Plato de la Semana</a></li>
-            <li><a href="#videos">Videos Relacionados</a></li>
-            <li><a href="#login">Acceso de Usuarios</a></li>
-            <li><a href="#registro">Registro de Nuevos Usuarios</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#login">Acceso</a></li>
+            <li><a href="#registro">Registro</a></li>
             <li><a href="#contacto">Contacto</a></li>
         </ul>
     </nav>
@@ -33,11 +387,13 @@
     <!-- Contenido principal -->
     <main>
 
-        <!-- Sección Quienes Somos -->
+        <!-- Sección Quienes Somos (ampliada con m&aacute;s contexto e historia) -->
         <section id="quienes-somos">
-            <h2><font color="#8B0000">Quienes Somos</font></h2>
+            <h2 class="seccion">Quienes Somos</h2>
             <p>Somos un restaurante especializado en la <strong>gastronom&iacute;a tradicional chilena</strong>, con m&aacute;s de 15 a&ntilde;os de trayectoria ofreciendo lo mejor de nuestra cocina criolla a todos nuestros visitantes.</p>
             <p>Nuestro equipo de chefs prepara cada plato con ingredientes frescos y de la mejor calidad, respetando las recetas tradicionales que han pasado de generaci&oacute;n en generaci&oacute;n. Nos ubicamos en el coraz&oacute;n de Santiago y estamos comprometidos con brindar una experiencia gastron&oacute;mica &uacute;nica tanto a nuestra clientela nacional como internacional.</p>
+            <p>Nuestra historia comenz&oacute; en el a&ntilde;o 2011, cuando la familia fundadora decidi&oacute; abrir un peque&ntilde;o local en el barrio Lastarria con la misi&oacute;n de rescatar y difundir los sabores aut&eacute;nticos de la cocina chilena. Con el paso de los a&ntilde;os, el restaurante creci&oacute; gracias al boca a boca de nuestros clientes satisfechos, quienes valoraban la autenticidad de nuestras preparaciones y la calidez de nuestro servicio.</p>
+            <p>Hoy en d&iacute;a, <strong>Sabores de Chile</strong> se ha consolidado como un referente de la gastronom&iacute;a criolla en Santiago, recibiendo tanto a familias chilenas que buscan reencontrarse con los sabores de su infancia, como a turistas internacionales deseosos de conocer la riqueza culinaria de nuestro pa&iacute;s. Trabajamos directamente con productores locales del Valle Central, la costa y el sur de Chile, asegurando que cada ingrediente refleje la diversidad y calidad de nuestra tierra.</p>
             <address>
                 Direcci&oacute;n: Av. Libertador Bernardo O&rsquo;Higgins 1520, Santiago Centro, Regi&oacute;n Metropolitana.<br>
                 Tel&eacute;fono: +56 2 2345 6789<br>
@@ -47,8 +403,8 @@
 
         <!-- Sección de Platos Principales -->
         <section id="platos">
-            <h2><font color="#8B0000">Platos Principales</font></h2>
-            <table border="1">
+            <h2 class="seccion">Platos Principales</h2>
+            <table>
                 <thead>
                     <tr>
                         <th>Plato</th>
@@ -88,8 +444,8 @@
 
         <!-- Sección de Bebidas -->
         <section id="bebidas">
-            <h2><font color="#8B0000">Bebidas</font></h2>
-            <table border="1">
+            <h2 class="seccion">Bebidas</h2>
+            <table>
                 <thead>
                     <tr>
                         <th>Bebida</th>
@@ -129,8 +485,8 @@
 
         <!-- Sección de Postres -->
         <section id="postres">
-            <h2><font color="#8B0000">Postres</font></h2>
-            <table border="1">
+            <h2 class="seccion">Postres</h2>
+            <table>
                 <thead>
                     <tr>
                         <th>Postre</th>
@@ -160,7 +516,7 @@
 
         <!-- Sección de Especialidades -->
         <section id="especialidades">
-            <h2><font color="#8B0000">Especialidades de la Casa</font></h2>
+            <h2 class="seccion">Especialidades de la Casa</h2>
             <dl>
                 <dt><strong>Caldillo de congrio</strong> &ndash; $14.500</dt>
                 <dd>Sopa emblem&aacute;tica de la costa chilena, preparada con congrio dorado, papas, cebolla, zanahoria y cilantro fresco. Inspirada en la famosa oda de Pablo Neruda.</dd>
@@ -175,10 +531,10 @@
 
         <!-- Sección de Promociones Especiales -->
         <section id="promociones">
-            <h2><font color="green"><strong>&#9733; Promociones Especiales &#9733;</strong></font></h2>
+            <h2 class="promo"><strong>&#9733; Promociones Especiales &#9733;</strong></h2>
             <ul>
-                <li><strong>Promo Almuerzo Ejecutivo:</strong> Incluye entrada + plato de fondo + bebida o postre por solo <strong><font color="red">$9.990</font></strong>. Vigencia: del <u>01 de abril</u> al <u>30 de abril de 2026</u>.</li>
-                <li><strong>Promo Fiestas Patrias:</strong> Men&uacute; completo para 4 personas: empanadas, anticuchos, pastel de choclo y bebidas por <strong><font color="red">$35.000</font></strong>. Vigencia: del <u>10 de septiembre</u> al <u>20 de septiembre de 2026</u>.</li>
+                <li><strong>Promo Almuerzo Ejecutivo:</strong> Incluye entrada + plato de fondo + bebida o postre por solo <strong><span class="precio-promo">$9.990</span></strong>. Vigencia: del <u>01 de abril</u> al <u>30 de abril de 2026</u>.</li>
+                <li><strong>Promo Fiestas Patrias:</strong> Men&uacute; completo para 4 personas: empanadas, anticuchos, pastel de choclo y bebidas por <strong><span class="precio-promo">$35.000</span></strong>. Vigencia: del <u>10 de septiembre</u> al <u>20 de septiembre de 2026</u>.</li>
                 <li><strong>Promo 2x1 en Postres:</strong> Los d&iacute;as <strong>martes y mi&eacute;rcoles</strong>, lleva 2 postres y paga solo 1. &iexcl;Aprovecha!</li>
                 <li><strong>Promo Cumple&ntilde;ero:</strong> &iexcl;El d&iacute;a de tu cumplea&ntilde;os tu postre es gratis! Solo presenta tu c&eacute;dula de identidad.</li>
             </ul>
@@ -186,7 +542,7 @@
 
         <!-- Sección Plato de la Semana -->
         <section id="plato-semana">
-            <h2><font color="#8B0000">Plato de la Semana: Curanto en Olla</font></h2>
+            <h2 class="seccion">Plato de la Semana: Curanto en Olla</h2>
             <p>El <strong>curanto en olla</strong> (o pulmay) es una preparaci&oacute;n t&iacute;pica del archipi&eacute;lago de Chilo&eacute;, en el sur de Chile. Consiste en una mezcla de mariscos (almejas, choritos, picorocos), carnes ahumadas, longanizas, papas, milcaos y chapaleles, todo cocido lentamente en una gran olla. Es un plato que representa la tradici&oacute;n y la identidad gastron&oacute;mica del pueblo chilote.</p>
 
             <h3>Im&aacute;genes del Curanto en Olla</h3>
@@ -207,25 +563,35 @@
 
         <!-- Sección de Videos Relacionados con iframe de YouTube -->
         <section id="videos">
-            <h2><font color="#8B0000">Videos Relacionados</font></h2>
-            <p>A continuaci&oacute;n se presenta un video relacionado con la preparaci&oacute;n del <strong>curanto</strong>, plato t&iacute;pico del archipi&eacute;lago de Chilo&eacute; en el sur de Chile. Este contenido audiovisual permite conocer de manera visual el proceso tradicional de cocci&oacute;n de este emblem&aacute;tico plato de la gastronom&iacute;a chilena.</p>
+            <h2 class="seccion">Videos Relacionados</h2>
+            <p>A continuaci&oacute;n se presentan videos relacionados con la gastronom&iacute;a t&iacute;pica chilena. Estos contenidos audiovisuales permiten conocer de manera visual el proceso de preparaci&oacute;n de platos emblem&aacute;ticos de nuestra cocina tradicional.</p>
 
-            <h3>Preparaci&oacute;n del Curanto Tradicional Chileno</h3>
-            <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/KhRnpOxQTWQ"
-                title="Preparaci&oacute;n del Curanto - Plato T&iacute;pico Chileno"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
+            <h3>Comida T&iacute;pica Chilena: Tradici&oacute;n y Sabor</h3>
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/OzHDITlxJ1E"
+                    title="Comida T&iacute;pica Chilena"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
 
-            <p>Fuente del video: YouTube &ndash; Preparaci&oacute;n del curanto en Chilo&eacute;.</p>
+            <h3>Recetas y Preparaciones de la Cocina Chilena</h3>
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/JUdFIMIjLE8"
+                    title="Recetas de la Cocina Chilena"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <p>Fuente de los videos: YouTube.</p>
         </section>
 
         <!-- Sección de Formulario de Acceso (Login) -->
         <section id="login">
-            <h2><font color="#8B0000">Acceso de Usuarios</font></h2>
+            <h2 class="seccion">Acceso de Usuarios</h2>
             <p>Ingrese sus credenciales para acceder al &aacute;rea reservada de clientes del restaurante.</p>
 
             <form name="formulario_login" method="post" action="/login/">
@@ -247,7 +613,7 @@
 
         <!-- Sección de Formulario de Registro de Nuevos Usuarios -->
         <section id="registro">
-            <h2><font color="#8B0000">Registro de Nuevos Usuarios</font></h2>
+            <h2 class="seccion">Registro de Nuevos Usuarios</h2>
             <p>Complete el siguiente formulario para registrarse como nuevo usuario del restaurante y acceder a promociones exclusivas.</p>
 
             <form name="formulario_registro" method="post" action="/registro/">
@@ -307,7 +673,7 @@
 
         <!-- Sección de Contacto con enlaces mailto y tel -->
         <section id="contacto">
-            <h2><font color="#8B0000">Contacto</font></h2>
+            <h2 class="seccion">Contacto</h2>
             <p>Tel&eacute;fono: <a href="tel:+56223456789">+56 2 2345 6789</a></p>
             <p>Correo: <a href="mailto:contacto@saboresdechile.cl">contacto@saboresdechile.cl</a></p>
         </section>
@@ -316,7 +682,7 @@
 
     <!-- Pie de página -->
     <footer>
-        <p><font size="2" color="gray">&copy; 2026 Restaurante Sabores de Chile Ltda. Todos los derechos reservados. &reg;</font></p>
+        <p class="legal">&copy; 2026 Restaurante Sabores de Chile Ltda. Todos los derechos reservados. &reg;</p>
         <p><a href="#quienes-somos">Volver al inicio</a></p>
     </footer>
 </body>
