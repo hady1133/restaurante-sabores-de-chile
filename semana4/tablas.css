@@ -1,0 +1,46 @@
+/* ============================================
+   tablas.css
+   Hoja de estilos externa para las tablas de
+   Platos, Bebidas y Postres.
+   Vinculada mediante <link> en el HTML.
+   ============================================ */
+
+/* Estilo general de las tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+}
+
+/* Encabezado de tabla con gradiente */
+thead {
+    background: linear-gradient(135deg, #5c1a1a, #8B0000);
+    color: #fff;
+}
+
+/* Celdas de encabezado */
+th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+/* Celdas de datos */
+td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Filas pares con fondo alternado */
+tbody tr:nth-child(even) {
+    background: #fdf5ee;
+}
+
+/* Efecto hover en filas */
+tbody tr:hover {
+    background: #f5e6d3;
+    transition: background 0.2s;
+}
