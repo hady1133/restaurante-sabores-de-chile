@@ -1,0 +1,52 @@
+/* ============================================
+   promociones.css
+   Hoja de estilos externa para la sección
+   Promociones Especiales.
+   Vinculada mediante @import en el HTML.
+   ============================================ */
+
+/* Contenedor de la sección promociones */
+#promociones {
+    border-left-color: #2e7d32;
+    background: linear-gradient(135deg, #f9fff9, #fff);
+}
+
+/* Título de promociones */
+h2.promo {
+    color: #2e7d32;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #a5d6a7;
+}
+
+/* Lista no enumerada de promociones */
+#promociones ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Cada elemento de la lista (tarjeta de promo) */
+#promociones ul li {
+    background: #fff;
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efecto hover en cada tarjeta */
+#promociones ul li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Precio destacado en rojo */
+.precio-promo {
+    color: #c62828;
+    font-weight: bold;
+    font-size: 1.1em;
+}
