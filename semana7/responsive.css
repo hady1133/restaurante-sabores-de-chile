@@ -1,0 +1,524 @@
+/* ============================================================
+   RESTAURANTE CHILENO - CSS Responsivo (Mobile First)
+   Archivo: responsive.css
+   Descripcion: Estilos responsivos para el sitio web del
+   restaurante, utilizando CSS Grid y media queries.
+   ============================================================ */
+
+/* --- Reset basico --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* --- Variables de color del tema --- */
+:root {
+  --color-primario-oscuro: #3d1010;
+  --color-acento: #8B0000;
+  --color-dorado: #c9a86c;
+  --color-fondo: #faf8f5;
+  --color-texto: #333;
+  --color-blanco: #fff;
+}
+
+/* ============================================================
+   1. BASE MOVIL (sin media query - estilos por defecto)
+   Pantallas menores a 768px
+   ============================================================ */
+
+/* --- Estilos generales del cuerpo --- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+}
+
+/* --- Encabezado y navegacion --- */
+header {
+  background-color: var(--color-primario-oscuro);
+  color: var(--color-blanco);
+  padding: 15px 10px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  margin: 0 0 10px 0;
+}
+
+/* Navegacion: los enlaces se envuelven en movil */
+nav {
+  background-color: var(--color-primario-oscuro);
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+nav ul li a {
+  color: var(--color-dorado);
+  text-decoration: none;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  display: block;
+  border: 1px solid var(--color-dorado);
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: var(--color-dorado);
+  color: var(--color-primario-oscuro);
+}
+
+/* --- Contenedor principal con CSS Grid --- */
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "quienes"
+    "platos"
+    "bebidas"
+    "postres"
+    "especialidades"
+    "promociones"
+    "plato-semana"
+    "videos"
+    "formulario";
+  gap: 20px;
+  padding: 15px;
+  max-width: 100%;
+}
+
+/* --- Asignacion de areas de grilla a cada seccion --- */
+.quienes-somos   { grid-area: quienes; }
+.platos          { grid-area: platos; }
+.bebidas         { grid-area: bebidas; }
+.postres         { grid-area: postres; }
+.especialidades  { grid-area: especialidades; }
+.promociones     { grid-area: promociones; }
+.plato-semana    { grid-area: plato-semana; }
+.videos          { grid-area: videos; }
+.formulario      { grid-area: formulario; }
+
+/* --- Estilos generales de secciones --- */
+section {
+  background-color: var(--color-blanco);
+  border: 1px solid var(--color-dorado);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Titulos de secciones --- */
+section h2 {
+  font-size: 1.3rem;
+  color: var(--color-acento);
+  border-bottom: 2px solid var(--color-dorado);
+  padding-bottom: 8px;
+  margin-top: 0;
+}
+
+section h3 {
+  font-size: 1.1rem;
+  color: var(--color-primario-oscuro);
+}
+
+/* --- Parrafos --- */
+section p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* --- Imagenes responsivas --- */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+/* --- Videos responsivos (iframes) --- */
+iframe {
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+  border: none;
+  border-radius: 6px;
+}
+
+.video-contenedor {
+  position: relative;
+  padding-bottom: 56.25%; /* Proporcion 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-contenedor iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Tablas con fuente reducida en movil --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  overflow-x: auto;
+}
+
+table th,
+table td {
+  border: 1px solid var(--color-dorado);
+  padding: 8px 10px;
+  text-align: left;
+}
+
+table th {
+  background-color: var(--color-primario-oscuro);
+  color: var(--color-blanco);
+  font-weight: bold;
+}
+
+table tr:nth-child(even) {
+  background-color: #f5f0e8;
+}
+
+/* --- Formulario --- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+form label {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--color-primario-oscuro);
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-dorado);
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  outline: none;
+  border-color: var(--color-acento);
+  box-shadow: 0 0 4px rgba(139, 0, 0, 0.3);
+}
+
+form button,
+form input[type="submit"] {
+  background-color: var(--color-acento);
+  color: var(--color-blanco);
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover,
+form input[type="submit"]:hover {
+  background-color: var(--color-primario-oscuro);
+}
+
+/* --- Listas --- */
+ul, ol {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+/* --- Pie de pagina --- */
+footer {
+  background-color: var(--color-primario-oscuro);
+  color: var(--color-blanco);
+  text-align: center;
+  padding: 20px 15px;
+  font-size: 0.85rem;
+  margin-top: 20px;
+}
+
+footer a {
+  color: var(--color-dorado);
+}
+
+/* --- Audio --- */
+audio {
+  width: 100%;
+}
+
+
+/* ============================================================
+   2. TABLET - min-width: 768px
+   Distribucion en 2 columnas con areas de grilla
+   ============================================================ */
+@media (min-width: 768px) {
+
+  /* Navegacion mas espaciada en tablet */
+  nav ul {
+    gap: 12px;
+  }
+
+  nav ul li a {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+
+  /* Grilla principal: 2 columnas */
+  main {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "quienes        quienes"
+      "platos         bebidas"
+      "postres        especialidades"
+      "promociones    promociones"
+      "plato-semana   videos"
+      "formulario     .";
+    gap: 25px;
+    padding: 25px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Tipografia mas grande en tablet */
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  section h2 {
+    font-size: 1.5rem;
+  }
+
+  section h3 {
+    font-size: 1.2rem;
+  }
+
+  section p {
+    font-size: 1rem;
+  }
+
+  /* Tablas con fuente normal */
+  table {
+    font-size: 0.9rem;
+  }
+
+  table th,
+  table td {
+    padding: 10px 14px;
+  }
+
+  /* Formulario mas amplio */
+  form input,
+  form textarea,
+  form select {
+    font-size: 1rem;
+  }
+
+  /* Iframe mas alto en tablet */
+  iframe {
+    min-height: 280px;
+  }
+}
+
+
+/* ============================================================
+   3. ESCRITORIO - min-width: 1024px
+   Distribucion en 3 columnas con areas de grilla
+   ============================================================ */
+@media (min-width: 1024px) {
+
+  /* Navegacion horizontal completa */
+  nav ul {
+    gap: 15px;
+  }
+
+  nav ul li a {
+    font-size: 1.05rem;
+    padding: 10px 20px;
+  }
+
+  /* Grilla principal: 3 columnas */
+  main {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "quienes       quienes       quienes"
+      "platos        bebidas       postres"
+      "especialidades promociones  promociones"
+      "plato-semana  videos        videos"
+      "formulario    .             .";
+    gap: 30px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Tipografia mas grande en escritorio */
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  section h2 {
+    font-size: 1.7rem;
+  }
+
+  section h3 {
+    font-size: 1.3rem;
+  }
+
+  section p {
+    font-size: 1.05rem;
+  }
+
+  /* Tablas con fuente completa */
+  table {
+    font-size: 1rem;
+  }
+
+  table th,
+  table td {
+    padding: 12px 16px;
+  }
+
+  /* Secciones con mayor padding interno */
+  section {
+    padding: 25px;
+  }
+
+  /* Iframe mas alto en escritorio */
+  iframe {
+    min-height: 350px;
+  }
+}
+
+
+/* ============================================================
+   4. IMPRESION - @media print
+   Estilos optimizados para imprimir la pagina
+   ============================================================ */
+@media print {
+
+  /* Colores en blanco y negro */
+  * {
+    color: #000 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Sin fondos degradados ni sombras */
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  /* Ocultar navegacion, audio, video e iframes */
+  nav,
+  audio,
+  video,
+  iframe,
+  .video-contenedor {
+    display: none !important;
+  }
+
+  /* Encabezado simplificado */
+  header {
+    background: none !important;
+    color: #000 !important;
+    border-bottom: 2px solid #000;
+    padding: 10px 0;
+  }
+
+  /* Secciones sin bordes decorativos */
+  section {
+    border: 1px solid #ccc;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    padding: 10px;
+  }
+
+  /* Grilla en una sola columna para impresion */
+  main {
+    display: block;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  main > * {
+    margin-bottom: 15px;
+  }
+
+  /* Los enlaces muestran la URL despues del texto */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    font-style: italic;
+    color: #555 !important;
+  }
+
+  /* Excepcion: no mostrar URL en enlaces internos */
+  a[href^="#"]::after {
+    content: "";
+  }
+
+  /* Tablas con bordes visibles */
+  table th,
+  table td {
+    border: 1px solid #000 !important;
+  }
+
+  table th {
+    background: #ddd !important;
+    color: #000 !important;
+  }
+
+  /* Imagenes en escala de grises */
+  img {
+    filter: grayscale(100%);
+    max-width: 300px;
+  }
+
+  /* Pie de pagina simplificado */
+  footer {
+    background: none !important;
+    color: #000 !important;
+    border-top: 1px solid #000;
+    font-size: 10pt;
+  }
+
+  /* Evitar cortes de pagina en elementos importantes */
+  h2, h3 {
+    page-break-after: avoid;
+  }
+}
