@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Restaurante de gastronomía chilena en Santiago">
+    <meta name="author" content="Hady Añigual Nahoe">
+    <title>Restaurante Sabores de Chile</title>
+    <!-- Hoja de estilos externa para tablas (vinculada con link) -->
+    <link rel="stylesheet" type="text/css" href="tablas.css">
+    <!-- Hoja de estilos interna con @import para promociones -->
+    <style>
+        /* Importación de hoja de estilos externa para promociones */
+        @import url('promociones.css');
+
+        /* === RESET Y BASE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #333;
+            background-color: #faf8f5;
+            line-height: 1.7;
+        }
+
+        /* =============================================
+           SEMANA 6 - PREGUNTA 1: MODELO DE CAJAS
+           Aplicación de margin, padding, border,
+           background-color y dimensionamiento en
+           header, main y footer.
+           ============================================= */
+
+        /* === HEADER: Modelo de cajas aplicado === */
+        /* margin: espacio externo alrededor del header */
+        /* padding: espacio interno entre el borde y el contenido */
+        /* border-bottom: borde inferior decorativo */
+        /* background: color/gradiente de fondo */
+        header {
+            background: linear-gradient(135deg, #1a0a0a, #5c1a1a, #8B0000);
+            color: #fff;
+            text-align: center;
+            padding: 55px 30px 60px 30px;   /* top right bottom left - relleno interno más generoso */
+            margin: 0;                       /* sin margen externo, ocupa todo el ancho */
+            border-bottom: 6px solid #c9a86c; /* borde inferior dorado más grueso y visible */
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            min-height: 200px;               /* altura mínima del header aumentada */
+            width: 100%;                     /* ancho completo */
+        }
+        header h1 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 2.8em;               /* SEMANA 6: tamaño aumentado */
+            letter-spacing: 3px;             /* SEMANA 6: mayor espaciado de letras */
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+            color: #fff;
+            margin-bottom: 8px;              /* margen inferior entre h1 y subtítulo */
+            padding: 5px 0;                  /* relleno vertical del título */
+        }
+        header p.subtitulo {
+            color: #f0d6a8;
+            font-size: 1.15em;              /* SEMANA 6: ligeramente mayor */
+            margin-top: 8px;
+            font-style: italic;
+            letter-spacing: 1px;             /* SEMANA 6: espaciado en subtítulo */
+        }
+
+        /* === NAVEGACIÓN === */
+        nav {
+            background: #3d1010;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            border-bottom: 2px solid #5c1a1a; /* SEMANA 6: borde inferior nav */
+        }
+        nav h2 {
+            display: none;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li a {
+            display: block;
+            color: #f0d6a8;
+            text-decoration: none;
+            padding: 14px 18px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: background 0.3s, color 0.3s;
+        }
+        nav ul li a:hover {
+            background: #8B0000;
+            color: #fff;
+        }
+
+        /* === CONTENIDO PRINCIPAL (main): Modelo de cajas aplicado === */
+        /* max-width: ancho máximo del contenido */
+        /* margin: 0 auto centra el bloque horizontalmente */
+        /* padding: relleno interno del main */
+        /* background-color: fondo diferenciado para el contenido */
+        /* border: bordes laterales sutiles */
+        main {
+            max-width: 960px;               /* ancho máximo del contenido */
+            width: 100%;                    /* ocupa el 100% hasta max-width */
+            margin: 0 auto;                 /* centrado horizontal con márgenes automáticos */
+            padding: 40px 30px;             /* SEMANA 6: relleno aumentado */
+            background-color: #eee8dc;      /* SEMANA 6: fondo crema más notorio */
+            border-left: 3px solid #c9a86c; /* SEMANA 6: borde izquierdo dorado visible */
+            border-right: 3px solid #c9a86c;/* SEMANA 6: borde derecho dorado visible */
+            min-height: 500px;              /* SEMANA 6: altura mínima */
+        }
+
+        /* === SECCIONES === */
+        section {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            border-left: 5px solid #8B0000;
+        }
+
+        /* =============================================
+           SEMANA 6 - PREGUNTA 2: PROPIEDADES Y VALORES
+           Cambio de fuente, tamaño de texto, estilos
+           de listas y tablas.
+           ============================================= */
+
+        /* Encabezados h2 con tipografía mejorada */
+        h2.seccion {
+            color: #8B0000;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.9em;               /* SEMANA 6: tamaño aumentado */
+            margin-bottom: 18px;             /* SEMANA 6: mayor separación */
+            padding-bottom: 10px;            /* SEMANA 6: mayor relleno inferior */
+            border-bottom: 2px solid #f0d6a8;
+            text-transform: capitalize;      /* SEMANA 6: primera letra en mayúscula */
+            letter-spacing: 0.5px;           /* SEMANA 6: espaciado de letras */
+        }
+        /* h2.promo movido a promociones.css */
+
+        /* Encabezados h3 con estilos mejorados */
+        h3 {
+            color: #5c1a1a;
+            margin: 22px 0 12px 0;           /* SEMANA 6: márgenes ajustados */
+            font-size: 1.25em;               /* SEMANA 6: tamaño aumentado */
+            font-family: Georgia, 'Times New Roman', serif; /* SEMANA 6: fuente serif */
+            border-left: 3px solid #f0d6a8;  /* SEMANA 6: borde izquierdo decorativo */
+            padding-left: 10px;              /* SEMANA 6: relleno izquierdo */
+        }
+
+        /* Párrafos con tipografía mejorada */
+        section p {
+            margin-bottom: 14px;             /* SEMANA 6: mayor margen inferior */
+            text-align: justify;
+            font-size: 1.02em;               /* SEMANA 6: tamaño ligeramente mayor */
+            line-height: 1.8;                /* SEMANA 6: interlineado mejorado */
+            color: #3a3a3a;                  /* SEMANA 6: color de texto suavizado */
+        }
+
+        /* === TABLAS: Estilos adicionales Semana 6 === */
+        /* Los estilos base están en tablas.css; aquí se añaden mejoras */
+        table caption, table + p.tabla-nota {
+            font-size: 0.9em;
+            color: #777;
+            font-style: italic;
+            text-align: center;
+            margin-top: 5px;
+        }
+        /* SEMANA 6: Columna de precio con estilo especial */
+        td:last-child {
+            font-weight: 600;
+            color: #8B0000;
+            white-space: nowrap;
+            text-align: right;
+            padding-right: 20px;
+        }
+        th:last-child {
+            text-align: right;
+            padding-right: 20px;
+        }
+        /* SEMANA 6: Primera columna (nombre) en negrita */
+        td:first-child {
+            font-weight: 600;
+            color: #3d1010;
+        }
+
+        /* === LISTA DE DEFINICIÓN (Especialidades): mejoras === */
+        dl {
+            margin: 10px 0;
+        }
+        dt {
+            color: #5c1a1a;
+            font-size: 1.15em;               /* SEMANA 6: tamaño mayor */
+            margin-top: 18px;                /* SEMANA 6: mayor separación */
+            font-family: Georgia, 'Times New Roman', serif; /* SEMANA 6: fuente serif */
+        }
+        dd {
+            margin-left: 20px;
+            margin-bottom: 12px;             /* SEMANA 6: mayor separación */
+            color: #555;
+            line-height: 1.7;                /* SEMANA 6: interlineado */
+            padding-left: 10px;              /* SEMANA 6: relleno izquierdo */
+            border-left: 2px solid #f0d6a8;  /* SEMANA 6: borde decorativo */
+        }
+
+        /* === PROMOCIONES: mejoras de lista === */
+        /* Estilos base en promociones.css; aquí mejoras de la Semana 6 */
+        #promociones ul li strong:first-child {
+            color: #2e7d32;                  /* SEMANA 6: nombre de promo en verde */
+            font-size: 1.05em;
+        }
+
+        /* =============================================
+           SEMANA 6 - PREGUNTA 3: POSICIONAMIENTO
+           Posicionamiento relativo y absoluto para
+           las imágenes de la sección Plato de la Semana.
+           ============================================= */
+
+        /* Contenedor de imágenes con posición relativa */
+        .galeria-plato {
+            position: relative;              /* Establece contexto de posicionamiento */
+            width: 100%;
+            min-height: 420px;               /* Altura mínima para el contenedor */
+            margin: 20px 0;
+            padding: 15px;
+            background: linear-gradient(135deg, #fdf5ee, #f9f3ec);
+            border: 2px solid #f0d6a8;
+            border-radius: 12px;
+            overflow: hidden;                /* Oculta contenido que sobresale */
+        }
+
+        /* Imagen principal: posición relativa con desplazamiento */
+        .galeria-plato .img-principal {
+            position: relative;              /* Posicionamiento relativo */
+            top: 0;                          /* Sin desplazamiento vertical */
+            left: 0;                         /* Sin desplazamiento horizontal */
+            width: 55%;                      /* Ocupa el 55% del contenedor */
+            max-width: 450px;
+            height: auto;
+            border: 3px solid #c9a86c;       /* Borde dorado */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 2;                      /* Capa superior */
+            transition: transform 0.3s;
+        }
+        .galeria-plato .img-principal:hover {
+            transform: scale(1.03);
+        }
+
+        /* Imagen secundaria: posición absoluta superpuesta */
+        .galeria-plato .img-secundaria {
+            position: absolute;              /* Posicionamiento absoluto */
+            bottom: 20px;                    /* 20px desde el borde inferior */
+            right: 20px;                     /* 20px desde el borde derecho */
+            width: 45%;                      /* Ocupa el 45% del contenedor */
+            max-width: 380px;
+            height: auto;
+            border: 3px solid #8B0000;       /* Borde rojo oscuro */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            z-index: 1;                      /* Capa inferior a la imagen principal */
+            opacity: 0.95;                   /* Ligera transparencia */
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .galeria-plato .img-secundaria:hover {
+            transform: scale(1.05);
+            opacity: 1;
+            z-index: 3;                      /* Al hacer hover, pasa al frente */
+        }
+
+        /* Etiqueta de la imagen con posición absoluta */
+        .galeria-plato .etiqueta-img {
+            position: absolute;
+            background: rgba(139, 0, 0, 0.85);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: 600;
+            z-index: 5;
+        }
+        .galeria-plato .etiqueta-img.top-left {
+            top: 25px;
+            left: 25px;
+        }
+        .galeria-plato .etiqueta-img.bottom-right {
+            bottom: 30px;
+            right: 30px;
+        }
+
+        /* === IMÁGENES generales === */
+        section img {
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+            max-width: 100%;
+            height: auto;
+        }
+        section img:hover {
+            transform: scale(1.02);
+        }
+
+        /* === AUDIO === */
+        audio {
+            margin: 15px 0;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* === IFRAMES (Videos) === */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            margin: 15px 0;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        /* === FORMULARIOS === */
+
+        /* --- Selector de etiqueta: fieldset, legend, label --- */
+        fieldset {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 25px;
+            background: #fdfcfa;
+            transition: border-color 0.3s;
+        }
+        fieldset:hover {
+            border-color: #8B0000;
+        }
+        legend {
+            color: #5c1a1a;
+            font-size: 1.2em;
+            padding: 0 10px;
+        }
+        label {
+            font-weight: 500;
+            color: #444;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        /* --- Selector de atributo: input[type="..."] --- */
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            max-width: 450px;
+            padding: 10px 14px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+            margin-top: 5px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background: #fff;
+        }
+        input[required], select[required] {
+            border-left: 4px solid #8B0000;
+        }
+        input[placeholder] {
+            font-style: italic;
+        }
+        input[type="password"] {
+            letter-spacing: 2px;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #8B0000;
+            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.15);
+            outline: none;
+        }
+        textarea {
+            resize: vertical;
+        }
+
+        /* --- Selector de clase: botones --- */
+        .btn-enviar {
+            background: linear-gradient(135deg, #8B0000, #a33);
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            margin-right: 10px;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0 2px 6px rgba(139,0,0,0.3);
+        }
+        .btn-enviar:hover {
+            background: linear-gradient(135deg, #a33, #c62828);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(139,0,0,0.4);
+        }
+        .btn-limpiar {
+            background: linear-gradient(135deg, #777, #999);
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            margin-right: 10px;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .btn-limpiar:hover {
+            background: linear-gradient(135deg, #999, #bbb);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        /* --- Selector de ID: formularios --- */
+        #login fieldset {
+            background: linear-gradient(135deg, #fdfcfa, #f5f0eb);
+            border-color: #c9a86c;
+        }
+        #registro fieldset {
+            background: linear-gradient(135deg, #fdfcfa, #edf5ed);
+            border-color: #6ca86c;
+        }
+
+        /* --- Selector descendiente: labels por formulario --- */
+        #login label {
+            color: #5c1a1a;
+            font-weight: 600;
+        }
+        #registro label {
+            color: #2e5c2e;
+            font-weight: 600;
+        }
+        #login legend {
+            color: #8B0000;
+            font-size: 1.3em;
+            border-bottom: 2px solid #f0d6a8;
+            padding-bottom: 5px;
+        }
+        #registro legend {
+            color: #2e7d32;
+            font-size: 1.3em;
+            border-bottom: 2px solid #a5d6a7;
+            padding-bottom: 5px;
+        }
+
+        /* --- Selector de clase: campo-radio --- */
+        .campo-radio {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .campo-radio input[type="radio"] {
+            margin-right: 5px;
+            accent-color: #8B0000;
+        }
+
+        /* === ADDRESS === */
+        address {
+            background: #f9f3ec;
+            border-left: 4px solid #f0d6a8;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 15px;
+            font-style: normal;
+            color: #555;
+        }
+
+        /* === CONTACTO === */
+        #contacto a {
+            color: #8B0000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        #contacto a:hover {
+            color: #c62828;
+            text-decoration: underline;
+        }
+
+        /* === FOOTER: Modelo de cajas aplicado === */
+        /* margin-top: separa el footer del contenido */
+        /* padding: relleno interno generoso */
+        /* border-top: borde superior decorativo */
+        /* background: color de fondo oscuro */
+        footer {
+            background: #1a0a0a;             /* SEMANA 6: fondo más oscuro que antes */
+            color: #ddd;
+            text-align: center;
+            padding: 35px 25px 30px 25px;    /* SEMANA 6: relleno aumentado */
+            margin-top: 0;                   /* Sin margen superior */
+            border-top: 6px solid #c9a86c;   /* SEMANA 6: borde superior dorado grueso */
+            width: 100%;                     /* Ancho completo */
+            min-height: 100px;               /* SEMANA 6: altura mínima mayor */
+        }
+        footer p.legal {
+            font-size: 0.88em;               /* SEMANA 6: ligeramente mayor */
+            color: #bbb;                     /* SEMANA 6: color más claro */
+            margin-bottom: 8px;              /* SEMANA 6: margen inferior */
+            letter-spacing: 0.3px;           /* SEMANA 6: espaciado */
+        }
+        footer a {
+            color: #f0d6a8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado principal del restaurante -->
+    <header>
+        <h1>Restaurante Sabores de Chile Ltda.</h1>
+        <p class="subtitulo">Gastronom&iacute;a tradicional chilena desde 2011</p>
+    </header>
+
+    <!-- Menú de navegación con anclas a cada sección -->
+    <nav>
+        <h2>Men&uacute; de Navegaci&oacute;n</h2>
+        <ul>
+            <li><a href="#quienes-somos">Quienes Somos</a></li>
+            <li><a href="#platos">Platos</a></li>
+            <li><a href="#bebidas">Bebidas</a></li>
+            <li><a href="#postres">Postres</a></li>
+            <li><a href="#especialidades">Especialidades</a></li>
+            <li><a href="#promociones">Promociones</a></li>
+            <li><a href="#plato-semana">Plato de la Semana</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#login">Acceso</a></li>
+            <li><a href="#registro">Registro</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main>
+
+        <!-- Sección Quienes Somos -->
+        <section id="quienes-somos">
+            <h2 class="seccion">Quienes Somos</h2>
+            <p>Somos un restaurante especializado en la <strong>gastronom&iacute;a tradicional chilena</strong>, con m&aacute;s de 15 a&ntilde;os de trayectoria ofreciendo lo mejor de nuestra cocina criolla a todos nuestros visitantes.</p>
+            <p>Nuestro equipo de chefs prepara cada plato con ingredientes frescos y de la mejor calidad, respetando las recetas tradicionales que han pasado de generaci&oacute;n en generaci&oacute;n. Nos ubicamos en el coraz&oacute;n de Santiago y estamos comprometidos con brindar una experiencia gastron&oacute;mica &uacute;nica tanto a nuestra clientela nacional como internacional.</p>
+            <p>Nuestra historia comenz&oacute; en el a&ntilde;o 2011, cuando la familia fundadora decidi&oacute; abrir un peque&ntilde;o local en el barrio Lastarria con la misi&oacute;n de rescatar y difundir los sabores aut&eacute;nticos de la cocina chilena. Con el paso de los a&ntilde;os, el restaurante creci&oacute; gracias al boca a boca de nuestros clientes satisfechos, quienes valoraban la autenticidad de nuestras preparaciones y la calidez de nuestro servicio.</p>
+            <p>Hoy en d&iacute;a, <strong>Sabores de Chile</strong> se ha consolidado como un referente de la gastronom&iacute;a criolla en Santiago, recibiendo tanto a familias chilenas que buscan reencontrarse con los sabores de su infancia, como a turistas internacionales deseosos de conocer la riqueza culinaria de nuestro pa&iacute;s. Trabajamos directamente con productores locales del Valle Central, la costa y el sur de Chile, asegurando que cada ingrediente refleje la diversidad y calidad de nuestra tierra.</p>
+            <address>
+                Direcci&oacute;n: Av. Libertador Bernardo O&rsquo;Higgins 1520, Santiago Centro, Regi&oacute;n Metropolitana.<br>
+                Tel&eacute;fono: +56 2 2345 6789<br>
+                Correo: contacto@saboresdechile.cl
+            </address>
+        </section>
+
+        <!-- Sección de Platos Principales -->
+        <section id="platos">
+            <h2 class="seccion">Platos Principales</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Plato</th>
+                        <th>Descripci&oacute;n</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pastel de choclo</td>
+                        <td>Preparado con choclo molido, pino de carne, pollo, huevo duro y aceitunas</td>
+                        <td>$8.500</td>
+                    </tr>
+                    <tr>
+                        <td>Cazuela de vacuno</td>
+                        <td>Caldo con trozo de carne, papa, zapallo, choclo y arroz</td>
+                        <td>$7.200</td>
+                    </tr>
+                    <tr>
+                        <td>Empanadas de pino (3 unidades)</td>
+                        <td>Masa horneada rellena con carne picada, cebolla, huevo, aceituna y pasas</td>
+                        <td>$5.900</td>
+                    </tr>
+                    <tr>
+                        <td>Curanto en olla</td>
+                        <td>Preparaci&oacute;n con mariscos, carne ahumada, longaniza, milcao y chapalele</td>
+                        <td>$12.000</td>
+                    </tr>
+                    <tr>
+                        <td>Porotos granados</td>
+                        <td>Guiso de porotos con mazamorra de choclo, zapallo y albahaca</td>
+                        <td>$6.800</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Sección de Bebidas -->
+        <section id="bebidas">
+            <h2 class="seccion">Bebidas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Bebida</th>
+                        <th>Descripci&oacute;n</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mote con huesillo</td>
+                        <td>Bebida tradicional chilena a base de trigo mote y duraznos deshidratados</td>
+                        <td>$2.500</td>
+                    </tr>
+                    <tr>
+                        <td>Jugo natural de fruta</td>
+                        <td>Preparado al momento con frutas frescas de temporada</td>
+                        <td>$2.800</td>
+                    </tr>
+                    <tr>
+                        <td>Vino tinto de la casa (copa)</td>
+                        <td>Copa de vino tinto del Valle del Maule</td>
+                        <td>$3.500</td>
+                    </tr>
+                    <tr>
+                        <td>Pisco sour</td>
+                        <td>C&oacute;ctel cl&aacute;sico chileno con pisco, lim&oacute;n de Pica y clara de huevo</td>
+                        <td>$4.200</td>
+                    </tr>
+                    <tr>
+                        <td>Agua mineral</td>
+                        <td>Agua mineral natural embotellada</td>
+                        <td>$1.500</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Sección de Postres -->
+        <section id="postres">
+            <h2 class="seccion">Postres</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Postre</th>
+                        <th>Descripci&oacute;n</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Leche asada</td>
+                        <td>Postre cl&aacute;sico preparado con leche, huevos, az&uacute;car y vainilla</td>
+                        <td>$3.200</td>
+                    </tr>
+                    <tr>
+                        <td>Sopaipillas pasadas</td>
+                        <td>Sopaipillas ba&ntilde;adas en chancaca caliente con c&aacute;scara de naranja</td>
+                        <td>$3.800</td>
+                    </tr>
+                    <tr>
+                        <td>Alfajor chileno</td>
+                        <td>Galleta rellena con manjar y cubierta con az&uacute;car flor</td>
+                        <td>$2.000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Sección de Especialidades -->
+        <section id="especialidades">
+            <h2 class="seccion">Especialidades de la Casa</h2>
+            <dl>
+                <dt><strong>Caldillo de congrio</strong> &ndash; $14.500</dt>
+                <dd>Sopa emblem&aacute;tica de la costa chilena, preparada con congrio dorado, papas, cebolla, zanahoria y cilantro fresco. Inspirada en la famosa oda de Pablo Neruda.</dd>
+
+                <dt><strong>Asado de tira al merk&eacute;n</strong> &ndash; $13.800</dt>
+                <dd>Corte de carne de vacuno asado lentamente a las brasas, sazonado con merk&eacute;n ahumado mapuche. Se acompa&ntilde;a con ensalada chilena y papas doradas.</dd>
+
+                <dt><strong>Ceviche chileno</strong> &ndash; $9.200</dt>
+                <dd>Reineta fresca marinada en lim&oacute;n de Pica, con cilantro, cebolla morada y aj&iacute; verde. Servido con galletas de agua.</dd>
+            </dl>
+        </section>
+
+        <!-- Sección de Promociones Especiales -->
+        <section id="promociones">
+            <h2 class="promo"><strong>&#9733; Promociones Especiales &#9733;</strong></h2>
+            <ul>
+                <li><strong>Promo Almuerzo Ejecutivo:</strong> Incluye entrada + plato de fondo + bebida o postre por solo <strong><span class="precio-promo">$9.990</span></strong>. Vigencia: del <u>01 de abril</u> al <u>30 de abril de 2026</u>.</li>
+                <li><strong>Promo Fiestas Patrias:</strong> Men&uacute; completo para 4 personas: empanadas, anticuchos, pastel de choclo y bebidas por <strong><span class="precio-promo">$35.000</span></strong>. Vigencia: del <u>10 de septiembre</u> al <u>20 de septiembre de 2026</u>.</li>
+                <li><strong>Promo 2x1 en Postres:</strong> Los d&iacute;as <strong>martes y mi&eacute;rcoles</strong>, lleva 2 postres y paga solo 1. &iexcl;Aprovecha!</li>
+                <li><strong>Promo Cumple&ntilde;ero:</strong> &iexcl;El d&iacute;a de tu cumplea&ntilde;os tu postre es gratis! Solo presenta tu c&eacute;dula de identidad.</li>
+            </ul>
+        </section>
+
+        <!-- Sección Plato de la Semana con posicionamiento de imágenes -->
+        <section id="plato-semana">
+            <h2 class="seccion">Plato de la Semana: Curanto en Olla</h2>
+            <p>El <strong>curanto en olla</strong> (o pulmay) es una preparaci&oacute;n t&iacute;pica del archipi&eacute;lago de Chilo&eacute;, en el sur de Chile. Consiste en una mezcla de mariscos (almejas, choritos, picorocos), carnes ahumadas, longanizas, papas, milcaos y chapaleles, todo cocido lentamente en una gran olla. Es un plato que representa la tradici&oacute;n y la identidad gastron&oacute;mica del pueblo chilote.</p>
+
+            <h3>Im&aacute;genes del Curanto</h3>
+            <!-- SEMANA 6: Galería con posicionamiento relativo y absoluto -->
+            <div class="galeria-plato">
+                <span class="etiqueta-img top-left">Curanto en Olla</span>
+                <img class="img-principal" src="curanto_olla.jpg" alt="Curanto en olla tradicional de Chilo&eacute;" width="450" height="338">
+                <img class="img-secundaria" src="curanto_hoyo.jpg" alt="Curanto preparado en hoyo en la tierra" width="400" height="300">
+                <span class="etiqueta-img bottom-right">Curanto al Hoyo</span>
+            </div>
+
+            <h3>Audio: M&uacute;sica Tradicional de Chilo&eacute;</h3>
+            <audio controls>
+                <source src="musica_chiloe.mp3" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+
+            <p>Para conocer m&aacute;s sobre este plato, visita:
+                <a href="https://es.wikipedia.org/wiki/Curanto" target="_blank">Curanto en Wikipedia</a>
+            </p>
+        </section>
+
+        <!-- Sección de Videos -->
+        <section id="videos">
+            <h2 class="seccion">Videos Relacionados</h2>
+            <p>A continuaci&oacute;n se presentan videos relacionados con la gastronom&iacute;a t&iacute;pica chilena. Estos contenidos audiovisuales permiten conocer de manera visual el proceso de preparaci&oacute;n de platos emblem&aacute;ticos de nuestra cocina tradicional.</p>
+
+            <h3>Comida T&iacute;pica Chilena: Tradici&oacute;n y Sabor</h3>
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/OzHDITlxJ1E"
+                    title="Comida T&iacute;pica Chilena"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <h3>Recetas y Preparaciones de la Cocina Chilena</h3>
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/JUdFIMIjLE8"
+                    title="Recetas de la Cocina Chilena"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <p>Fuente de los videos: YouTube.</p>
+        </section>
+
+        <!-- Sección de Formulario de Acceso -->
+        <section id="login">
+            <h2 class="seccion">Acceso de Usuarios</h2>
+            <p>Ingrese sus credenciales para acceder al &aacute;rea reservada de clientes del restaurante.</p>
+
+            <form name="formulario_login" class="form-login" method="post" action="/login/">
+                <fieldset>
+                    <legend><strong>Iniciar Sesi&oacute;n</strong></legend>
+
+                    <label for="usuario">Nombre de usuario:</label><br>
+                    <input type="text" id="usuario" name="usuario" placeholder="Ingrese su nombre de usuario" required>
+                    <br><br>
+
+                    <label for="contrasena">Contrase&ntilde;a:</label><br>
+                    <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contrase&ntilde;a" required>
+                    <br><br>
+
+                    <input type="submit" class="btn-enviar" value="Iniciar Sesi&oacute;n">
+                </fieldset>
+            </form>
+        </section>
+
+        <!-- Sección de Formulario de Registro -->
+        <section id="registro">
+            <h2 class="seccion">Registro de Nuevos Usuarios</h2>
+            <p>Complete el siguiente formulario para registrarse como nuevo usuario del restaurante y acceder a promociones exclusivas.</p>
+
+            <form name="formulario_registro" class="form-registro" method="post" action="/registro/">
+                <fieldset>
+                    <legend><strong>Datos Personales</strong></legend>
+
+                    <label for="nombre">Nombre:</label><br>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
+                    <br><br>
+
+                    <label for="apellido">Apellido:</label><br>
+                    <input type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido" required>
+                    <br><br>
+
+                    <label for="tipo-documento">Tipo de documento:</label><br>
+                    <select id="tipo-documento" name="tipo_documento" required>
+                        <option value="">Seleccione una opci&oacute;n</option>
+                        <option value="DNI">DNI</option>
+                        <option value="RUT">RUT</option>
+                        <option value="Cedula">C&eacute;dula</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                    </select>
+                    <br><br>
+
+                    <label for="numero-documento">N&uacute;mero de documento:</label><br>
+                    <input type="text" id="numero-documento" name="numero_documento" placeholder="Ingrese su n&uacute;mero de documento" required>
+                    <br><br>
+
+                    <label for="fecha-nacimiento">Fecha de nacimiento:</label><br>
+                    <input type="date" id="fecha-nacimiento" name="fecha_nacimiento" required>
+                    <br><br>
+
+                    <label>Sexo:</label><br>
+                    <span class="campo-radio">
+                        <input type="radio" id="masculino" name="sexo" value="masculino" required>
+                        <label for="masculino">Masculino</label>
+                    </span>
+                    <span class="campo-radio">
+                        <input type="radio" id="femenino" name="sexo" value="femenino">
+                        <label for="femenino">Femenino</label>
+                    </span>
+                    <br><br>
+
+                    <label for="correo">Correo electr&oacute;nico:</label><br>
+                    <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+                    <br><br>
+
+                    <label for="telefono">Tel&eacute;fono m&oacute;vil:</label><br>
+                    <input type="tel" id="telefono" name="telefono" placeholder="+56 9 1234 5678">
+                    <br><br>
+
+                    <label for="comentarios">Comentarios:</label><br>
+                    <textarea id="comentarios" name="comentarios" rows="5" cols="40" placeholder="Escriba sus comentarios aqu&iacute;..."></textarea>
+                    <br><br>
+
+                    <input type="submit" class="btn-enviar" value="Registrarse">
+                    <input type="reset" class="btn-limpiar" value="Limpiar formulario">
+                </fieldset>
+            </form>
+        </section>
+
+        <!-- Sección de Contacto -->
+        <section id="contacto">
+            <h2 class="seccion">Contacto</h2>
+            <p>Tel&eacute;fono: <a href="tel:+56223456789">+56 2 2345 6789</a></p>
+            <p>Correo: <a href="mailto:contacto@saboresdechile.cl">contacto@saboresdechile.cl</a></p>
+        </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p class="legal">&copy; 2026 Restaurante Sabores de Chile Ltda. Todos los derechos reservados. &reg;</p>
+        <p><a href="#quienes-somos">Volver al inicio</a></p>
+    </footer>
+</body>
+</html>
